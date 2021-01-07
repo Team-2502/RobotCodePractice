@@ -7,8 +7,6 @@
 
 package com.team2502.robot2020;
 
-import java.util.HashMap;
-
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants.  This class should not be used for any other purpose.  All constants should be
@@ -33,6 +31,9 @@ public final class Constants {
         // Buttons on JOYSTICK_OPERATOR
         public static final int BUTTON_CONTROL_PANEL = 9;
         public static final int BUTTON_ACTUATE_CONTROL_PANEL = 11;
+        public static final int BUTTON_TURRET_RIGHT = 1;
+        public static final int BUTTON_TURRET_LEFT = 2;
+        public static final int BUTTON_ACTUATE_ADJUSTABLE_HOOD = 3;
     }
 
     public static final class RobotMap {
@@ -48,11 +49,13 @@ public final class Constants {
 
             // SparkMax
             public static final int CONTROL_PANEL = 57;
+            public static final int TURRET = 1;
         }
 
         public static final class Solenoid {
             public static final int DRIVETRAIN = 0;
             public static final int CONTROL_PANEL = 2;
+            public static final int ADJUSTABLE_HOOD = 3;
         }
     }
 
@@ -60,6 +63,8 @@ public final class Constants {
 
         public static final class MotorSpeeds {
             public static final double CONTROL_PANEL = 0.6;
+            public static final double TURRET_LEFT = -1;
+            public static final double TURRET_RIGHT = 1;
         }
 
         public static final class Shooter{

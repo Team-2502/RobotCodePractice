@@ -26,6 +26,8 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class RobotContainer {
   protected final DrivetrainSubsystem DRIVE_TRAIN = new DrivetrainSubsystem();
   protected final ControlPanelWheelSubsystem CONTROL_PANEL = new ControlPanelWheelSubsystem();
+  protected final AdjustableHoodSubsystem ADJUSTABLE_HOOD = new AdjustableHoodSubsystem();
+  protected final TurretSubsystem TURRET = new TurretSubsystem();
 
   private static final Joystick JOYSTICK_DRIVE_RIGHT = new Joystick(Constants.OI.JOYSTICK_DRIVE_RIGHT);
   private static final Joystick JOYSTICK_DRIVE_LEFT = new Joystick(Constants.OI.JOYSTICK_DRIVE_LEFT);
@@ -52,6 +54,16 @@ public class RobotContainer {
 
     JoystickButton ActuateControlPanel = new JoystickButton(JOYSTICK_OPERATOR, Constants.OI.BUTTON_ACTUATE_CONTROL_PANEL);
     ActuateControlPanel.whenPressed(new ToggleControlPanelWheelSolenoidCommand(CONTROL_PANEL));
+
+    JoystickButton ActuateHood = new JoystickButton(JOYSTICK_OPERATOR, Constants.OI.BUTTON_ACTUATE_ADJUSTABLE_HOOD);
+    ActuateHood.whenPressed(new ToggleAdjustableHoodSolenoidCommand(ADJUSTABLE_HOOD));
+
+    JoystickButton RunTurretLeftButton = new JoystickButton(JOYSTICK_OPERATOR, Constants.OI.BUTTON_TURRET_LEFT);
+    RunTurretLeftButton.whileHeld(new RunTurretCommand(TURRET, Constants.Robot.MotorSpeeds.TURRET_LEFT));
+
+    JoystickButton RunTurretRightButton = new JoystickButton(JOYSTICK_OPERATOR, Constants.OI.BUTTON_TURRET_RIGHT);
+    RunTurretRightButton.whileHeld(new RunTurretCommand(TURRET, Constants.Robot.MotorSpeeds.TURRET_RIGHT));
+
   }
 
   public Command getAutonomousRoutine() {
